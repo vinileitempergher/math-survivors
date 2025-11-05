@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ltymd"]
 [ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
 [ext_resource type="AudioStream" uid="uid://bbufl4r1ou1rw" path="res://Audio/Music/battleThemeA.mp3" id="10_rk3we"]
-[ext_resource type="Texture2D" uid="uid://1uw2okehnu56" path="res://Textures/arvore.png" id="11_g8200"]
 [ext_resource type="Script" uid="uid://buvlo8c3trfoy" path="res://Audio/Music/snd_Music.gd" id="11_ovtx6"]
 [ext_resource type="Texture2D" uid="uid://cildmf7cqqppt" path="res://Textures/arvorenova.png" id="12_pqewc"]
 
@@ -81,7 +80,11 @@ time_end = 300
 enemy = ExtResource("9_xs42h")
 enemy_num = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wqet"]
+size = Vector2(11, 17)
+
 [node name="World" type="Node2D"]
+show_behind_parent = true
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 2
@@ -97,7 +100,6 @@ texture = ExtResource("1_ddb8v")
 
 [node name="Player" parent="." instance=ExtResource("2_40uwv")]
 top_level = true
-visibility_layer = 2
 position = Vector2(-1, -1)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_p01g4")]
@@ -113,65 +115,49 @@ volume_db = -15.0
 autoplay = true
 script = ExtResource("11_ovtx6")
 
-[node name="Cao" type="Sprite2D" parent="."]
-position = Vector2(-88, 79)
-texture = ExtResource("1_ddb8v")
-
 [node name="Arvorenova" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(-284, 67)
 texture = ExtResource("12_pqewc")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova/StaticBody2D"]
+position = Vector2(-0.5, 14)
+shape = SubResource("RectangleShape2D_0wqet")
+
 [node name="Arvorenova2" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(-113, 146)
 texture = ExtResource("12_pqewc")
 
-[node name="Arvore" type="Sprite2D" parent="."]
-position = Vector2(-204, -77)
-texture = ExtResource("11_g8200")
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova2/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
 
 [node name="Arvorenova3" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(224, -71)
 texture = ExtResource("12_pqewc")
 
-[node name="Cao2" type="Sprite2D" parent="."]
-position = Vector2(120, 81)
-texture = ExtResource("1_ddb8v")
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova3/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
 
 [node name="Arvorenova4" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(115, 60)
 texture = ExtResource("12_pqewc")
 
-[node name="Cao3" type="Sprite2D" parent="."]
-position = Vector2(240, 117)
-texture = ExtResource("1_ddb8v")
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova4"]
 
-[node name="Cao4" type="Sprite2D" parent="."]
-position = Vector2(266, 150)
-texture = ExtResource("1_ddb8v")
-
-[node name="Cao5" type="Sprite2D" parent="."]
-position = Vector2(252, 125)
-texture = ExtResource("1_ddb8v")
-
-[node name="Cao6" type="Sprite2D" parent="."]
-position = Vector2(264, 133)
-texture = ExtResource("1_ddb8v")
-
-[node name="Cao7" type="Sprite2D" parent="."]
-position = Vector2(278, 142)
-texture = ExtResource("1_ddb8v")
-
-[node name="Cao8" type="Sprite2D" parent="."]
-position = Vector2(228, 125)
-texture = ExtResource("1_ddb8v")
-
-[node name="Cao9" type="Sprite2D" parent="."]
-position = Vector2(237, 131)
-texture = ExtResource("1_ddb8v")
-
-[node name="Cao10" type="Sprite2D" parent="."]
-position = Vector2(251, 140)
-texture = ExtResource("1_ddb8v")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova4/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
 
 [node name="Arvorenova5" type="Sprite2D" parent="."]
 top_level = true
@@ -181,60 +167,162 @@ texture = ExtResource("12_pqewc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova5"]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova5/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
+
 [node name="Arvorenova6" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(-244, 130)
 texture = ExtResource("12_pqewc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova6/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
 
 [node name="Arvorenova7" type="Sprite2D" parent="."]
 top_level = true
 position = Vector2(151, -96)
 texture = ExtResource("12_pqewc")
 
-[node name="Arvore2" type="Sprite2D" parent="."]
-position = Vector2(129, 139)
-texture = ExtResource("11_g8200")
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova7/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
 
 [node name="Arvorenova8" type="Sprite2D" parent="."]
+top_level = true
 position = Vector2(-70, -128)
 texture = ExtResource("12_pqewc")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova8/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
+
+[node name="Arvorenova9" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(-204, -77)
+texture = ExtResource("12_pqewc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova9/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
+
+[node name="Arvorenova10" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(130, 138)
+texture = ExtResource("12_pqewc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arvorenova10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arvorenova10/StaticBody2D"]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_0wqet")
+
+[node name="Cao" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(-88, 86)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao2" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(120, 81)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao3" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(240, 117)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao4" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(266, 150)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao5" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(252, 125)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao6" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(264, 133)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao7" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(278, 142)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao8" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(228, 125)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao9" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(237, 131)
+texture = ExtResource("1_ddb8v")
+
+[node name="Cao10" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(251, 140)
+texture = ExtResource("1_ddb8v")
+
 [node name="Cao11" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(-182, -24)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao12" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(-151, 75)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao13" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(-284, -16)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao14" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(-43, -90)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao15" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(40, 131)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao16" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(-71, -87)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao17" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(-56, 11)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao18" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(115, -23)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao19" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(178, -36)
 texture = ExtResource("1_ddb8v")
 
 [node name="Cao20" type="Sprite2D" parent="."]
+visibility_layer = 3
 position = Vector2(188, 61)
 texture = ExtResource("1_ddb8v")
 

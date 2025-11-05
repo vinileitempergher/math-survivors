@@ -147,7 +147,7 @@ func _ready():
 	_on_hurt_box_hurt(0,0,0)
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	movement()
 
 func movement():
@@ -284,7 +284,7 @@ func calculate_experiencecap():
 	if experience_level < 20:
 		exp_cap = experience_level*5
 	elif experience_level < 40:
-		exp_cap + 95 * (experience_level-19)*8
+		exp_cap = exp_cap + 95 * (experience_level - 19) * 8
 	else:
 		exp_cap = 255 + (experience_level-39)*12
 		
@@ -490,21 +490,21 @@ func show_quiz_difficulty_selection():
 
 func show_quiz():
 	current_quiz_question = quiz_questions[quiz_difficulty].pick_random()
-	
+
 	var quiz_panel = Panel.new()
 	quiz_panel.name = "QuizPanel"
 	quiz_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 	quiz_panel.visible = true
-	
+
 	# Âncoras do painel (centralizado e com bom espaço)
 	quiz_panel.set_anchor(SIDE_LEFT, 0.25)
 	quiz_panel.set_anchor(SIDE_RIGHT, 0.75)
-	quiz_panel.set_anchor(SIDE_TOP, 0.15)
-	quiz_panel.set_anchor(SIDE_BOTTOM, 0.85)
-	
+	quiz_panel.set_anchor(SIDE_TOP, 0.20)
+	quiz_panel.set_anchor(SIDE_BOTTOM, 0.80)
+
 	var gui_layer = get_node("GUILayer/GUI")
 	gui_layer.add_child(quiz_panel)
-	
+
 	# Layout raiz com padding
 	var root = MarginContainer.new()
 	root.name = "QuizRoot"
@@ -514,34 +514,44 @@ func show_quiz():
 	root.add_theme_constant_override("margin_top", 16)
 	root.add_theme_constant_override("margin_bottom", 16)
 	quiz_panel.add_child(root)
-	
+
 	# Coluna principal
 	var vbox = VBoxContainer.new()
 	vbox.name = "QuizVBox"
 	vbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	vbox.add_theme_constant_override("separation", 10)
+	vbox.add_theme_constant_override("separation", 10) # Aumentei um pouco a separação
 	root.add_child(vbox)
-	
+
 	# Pergunta com autowrap e limite de tamanho
 	var question_label = Label.new()
 	question_label.text = current_quiz_question["question"]
 	question_label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	question_label.clip_text = true
 	question_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	question_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	question_label.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
-	question_label.add_theme_font_size_override("font_size", 16)
-	question_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	question_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
-	question_label.custom_minimum_size = Vector2(0, 100)  # Limite de altura
-	vbox.add_child(question_label)
 	
-	# Opções centralizadas e ajustadas ao quadrado
-	var options_container = VBoxContainer.new()
+	# --- MUDANÇA PRINCIPAL AQUI ---
+	# Diga ao label para expandir e ocupar o espaço, em vez de encolher
+	question_label.size_flags_vertical = Control.SIZE_EXPAND_FILL 
+	# Dê a ele 1 "parte" do espaço vertical total
+	question_label.size_flags_stretch_ratio = 1.0 
+	
+	# Ensure the question_label is visible and properly aligned
+	question_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	question_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	question_label.custom_minimum_size = Vector2(0, 50) # Set a minimum height for visibility
+	question_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	question_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	question_label.autowrap_mode = TextServer.AUTOWRAP_WORD # Ensure text wraps within the label
+	
+	vbox.add_child(question_label)
+
+	# Opções ajustadas para caberem no painel
+	var options_container = GridContainer.new()
 	options_container.name = "QuizOptions"
+	options_container.columns = 2 # Set two columns for the options
 	options_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	options_container.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	options_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	options_container.add_theme_constant_override("separation", 8)
 	vbox.add_child(options_container)
 
@@ -550,18 +560,16 @@ func show_quiz():
 	for option in shuffled_options:
 		var option_btn = Button.new()
 		option_btn.text = str(option)
-		option_btn.custom_minimum_size = Vector2(0, 34)
+		option_btn.custom_minimum_size = Vector2(0, 40) # Set button height
 		option_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
 		option_btn.add_theme_font_size_override("font_size", 14)
 		option_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		option_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		option_btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		option_btn.pressed.connect(_on_quiz_answer_selected.bind(option))
 		options_container.add_child(option_btn)
 
 	quiz_panel_visible = true
-
-	# Ajuste final de layout após o painel entrar na árvore (garante medidas reais)
-	call_deferred("_finalize_quiz_layout_paths", quiz_panel.get_path(), question_label.get_path(), options_container.get_path())
-
+	
 func _on_difficulty_selected(difficulty: String):
 	quiz_difficulty = difficulty
 	# Buscar o painel no caminho correto

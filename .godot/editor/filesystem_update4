@@ -5,3 +5,7 @@ res://Player/player.gd
 res://World/arvore_spawn.gd
 res://World/gerador_de_arvore.gd
 res://World/gerador_de_grama.gd
+res://Enemy/enemy_kobold_strong.tscn
+res://Enemy/enemy_cyclops.tscn
+res://Enemy/enemy_kobold_weak.tscn
+res://Enemy/enemy_juggernaut.tscn

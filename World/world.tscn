@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://du6qbgqucaqov"]
+[gd_scene load_steps=30 format=3 uid="uid://du6qbgqucaqov"]
 
 [ext_resource type="Script" uid="uid://bqt5ymq5vq6w4" path="res://World/spawn_rock.gd" id="1_awrha"]
 [ext_resource type="Texture2D" uid="uid://bhgnlnl700er5" path="res://Textures/cao.png" id="1_ddb8v"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cildmf7cqqppt" path="res://Textures/arvorenova.png" id="12_pqewc"]
 [ext_resource type="Script" uid="uid://cg6qdyvis6bgw" path="res://World/gerador_de_arvore.gd" id="14_f23eu"]
 [ext_resource type="Script" uid="uid://c2l8xxgapv17x" path="res://World/gerador_de_grama.gd" id="15_oeat8"]
+[ext_resource type="Texture2D" uid="uid://cetqjnfa17i2f" path="res://Textures/seta (1).png" id="17_kcyjf"]
+[ext_resource type="Texture2D" uid="uid://cdgaj527xsso8" path="res://Textures/result_placa.png" id="18_xw5lg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wqet"]
 size = Vector2(11, 17)
@@ -113,6 +115,16 @@ scale = Vector2(1.0504999, 1.01325)
 texture = SubResource("CompressedTexture2D_tmdrd")
 region_enabled = true
 region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="Seta(1)" type="Sprite2D" parent="Background"]
+position = Vector2(-1505.9496, 1168.5171)
+scale = Vector2(0.9519277, 0.9869233)
+texture = ExtResource("17_kcyjf")
+
+[node name="ResultPlaca" type="Sprite2D" parent="Background"]
+position = Vector2(1332.6989, 1109.3018)
+scale = Vector2(0.9519277, 0.9869233)
+texture = ExtResource("18_xw5lg")
 
 [node name="Player" parent="." instance=ExtResource("2_40uwv")]
 top_level = true

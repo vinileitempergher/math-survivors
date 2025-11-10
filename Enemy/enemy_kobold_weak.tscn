@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://gvm5jcbbgwdv"]
 
-[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_1bh7b"]
-[ext_resource type="Texture2D" uid="uid://bb2tqmla8xdg8" path="res://Textures/Enemy/kolbold_weak.png" id="2_ojadc"]
+[ext_resource type="Script" uid="uid://bphxyonmtn3wq" path="res://Enemy/enemy.gd" id="1_1bh7b"]
+[ext_resource type="Texture2D" uid="uid://b2sbmelwv5u73" path="res://Textures/Enemy/divisao.png" id="2_mm2yx"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gamcv"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_vdnsx"]
 [ext_resource type="AudioStream" uid="uid://bi7t7cjthnhhc" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_03jve"]
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_regpg"]
 _data = {
-"RESET": SubResource("Animation_xfnyu"),
-"walk": SubResource("Animation_w8hns")
+&"RESET": SubResource("Animation_xfnyu"),
+&"walk": SubResource("Animation_w8hns")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rborl"]
@@ -61,9 +61,9 @@ motion_mode = 1
 script = ExtResource("1_1bh7b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_ojadc")
-hframes = 2
+position = Vector2(0.9999996, 1.4999993)
+scale = Vector2(0.7407407, 0.5121951)
+texture = ExtResource("2_mm2yx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 3)
@@ -71,7 +71,7 @@ shape = SubResource("CapsuleShape2D_24u87")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_regpg")
+&"": SubResource("AnimationLibrary_regpg")
 }
 
 [node name="HurtBox" parent="." instance=ExtResource("3_gamcv")]

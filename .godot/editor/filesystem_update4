@@ -1,2 +1,7 @@
 res://World/world.tscn
+res://World/spawn_rock.gd
 res://Player/player.tscn
+res://Player/player.gd
+res://World/arvore_spawn.gd
+res://World/gerador_de_arvore.gd
+res://World/gerador_de_grama.gd

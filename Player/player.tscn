@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dncgepmkc4jf4"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_37q80"]
+[ext_resource type="Script" uid="uid://dffqo3ihgeqvb" path="res://Player/player.gd" id="1_37q80"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gs51i"]
 [ext_resource type="Texture2D" uid="uid://dx7xx6vfahxlq" path="res://Textures/GUI/exp_background.png" id="4_pbpj5"]
 [ext_resource type="Texture2D" uid="uid://dlx33roiu0vlj" path="res://Textures/GUI/exp_progress.png" id="5_5ive2"]
@@ -16,8 +16,8 @@
 load_path = "res://.godot/imported/player_sprite.png-99975927c87d39d0f4e4a4a21b6d0fe5.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nffdp"]
-radius = 4.0
-height = 16.0
+radius = 7.0
+height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfi4i"]
 size = Vector2(12, 20)
@@ -41,7 +41,7 @@ hframes = 2
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 3)
+position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_nffdp")
 
 [node name="walkTimer" type="Timer" parent="."]

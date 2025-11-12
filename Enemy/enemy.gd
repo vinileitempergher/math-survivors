@@ -38,6 +38,8 @@ func _physics_process(_delta):
 
 func death():
 	emit_signal("remove_from_array",self)
+	if player.has_method("on_enemy_killed"):
+		player.on_enemy_killed()
 	var enemy_death = death_anim.instantiate()
 	enemy_death.scale = sprite.scale
 	enemy_death.global_position = global_position

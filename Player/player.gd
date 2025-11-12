@@ -1,11 +1,23 @@
 extends CharacterBody2D
 
 
+var base_movement_speed = 800.0
 var movement_speed = 800.0
 var hp = 80
 var maxhp = 80
 var last_movement = Vector2.UP
 var time = 0
+
+var map_bounds = {
+	"left": 0.0,
+	"right": 0.0,
+	"top": 0.0,
+	"bottom": 0.0
+}
+
+var enemy_kills = 0
+var damage_flash_time = 0.0
+var is_paused = false
 
 var experience = 0
 var experience_level = 1
@@ -55,6 +67,7 @@ var enemy_close = []
 
 @onready var sprite = $Sprite2D
 @onready var walkTimer = get_node("%walkTimer")
+@onready var camera = $Camera2D
 
 #GUI
 @onready var expBar = get_node("%ExperienceBar")
@@ -73,6 +86,9 @@ var enemy_close = []
 @onready var lblResult = get_node("%lbl_Result")
 @onready var sndVictory = get_node("%snd_victory")
 @onready var sndLose = get_node("%snd_lose")
+@onready var lblKills = get_node("%lblKills")
+
+var minimap_panel = null
 
 #Signal
 signal playerdeath
@@ -141,14 +157,96 @@ var quiz_difficulty = ""
 var quiz_panel_visible = false
 
 func _ready():
+	var viewport_size = get_viewport().get_visible_rect().size
+	var half_viewport = viewport_size / 2
+	
+	var rock_origin = Vector2(-1718, -1833)
+	var rock_size = 240
+	var rock_spacing = 15
+	
+	var map_left = rock_origin.x
+	var map_right = rock_origin.x + (rock_size - 1) * rock_spacing
+	var map_top = rock_origin.y
+	var map_bottom = rock_origin.y + (rock_size - 1) * rock_spacing
+	
+	camera.limit_left = int(map_left + half_viewport.x)
+	camera.limit_right = int(map_right - half_viewport.x)
+	camera.limit_top = int(map_top + half_viewport.y)
+	camera.limit_bottom = int(map_bottom - half_viewport.y)
+	camera.limit_smoothed = true
+	
+	map_bounds.left = camera.limit_left
+	map_bounds.right = camera.limit_right
+	map_bounds.top = camera.limit_top
+	map_bounds.bottom = camera.limit_bottom
+	
 	upgrade_character("icespear1")
 	attack()
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
+	update_kills_display()
+	setup_minimap()
 	
 
-func _physics_process(_delta):
+func _physics_process(delta):
+	if Input.is_action_just_pressed("pause") and !quiz_panel_visible and hp > 0:
+		toggle_pause()
+	
+	if damage_flash_time > 0:
+		damage_flash_time -= delta
+		sprite.modulate = Color(1, 1 - damage_flash_time, 1 - damage_flash_time)
+	else:
+		sprite.modulate = Color.WHITE
 	movement()
+	update_minimap()
+
+func toggle_pause():
+	is_paused = !is_paused
+	get_tree().paused = is_paused
+	var pause_panel = get_node_or_null("GUILayer/GUI/PausePanel")
+	if is_paused:
+		show_pause_menu()
+	elif pause_panel:
+		pause_panel.queue_free()
+
+func show_pause_menu():
+	var pause_panel = Panel.new()
+	pause_panel.name = "PausePanel"
+	pause_panel.process_mode = Node.PROCESS_MODE_ALWAYS
+	pause_panel.set_anchor(SIDE_LEFT, 0.3)
+	pause_panel.set_anchor(SIDE_RIGHT, 0.7)
+	pause_panel.set_anchor(SIDE_TOP, 0.3)
+	pause_panel.set_anchor(SIDE_BOTTOM, 0.7)
+	
+	var gui_layer = get_node("GUILayer/GUI")
+	gui_layer.add_child(pause_panel)
+	
+	var vbox = VBoxContainer.new()
+	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vbox.add_theme_constant_override("separation", 20)
+	pause_panel.add_child(vbox)
+	
+	var title = Label.new()
+	title.text = "PAUSA"
+	title.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
+	title.add_theme_font_size_override("font_size", 32)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vbox.add_child(title)
+	
+	var resume_btn = Button.new()
+	resume_btn.text = "Continuar (ESC)"
+	resume_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
+	resume_btn.custom_minimum_size = Vector2(0, 40)
+	resume_btn.pressed.connect(toggle_pause)
+	vbox.add_child(resume_btn)
+	
+	var menu_btn = Button.new()
+	menu_btn.text = "Menu Principal"
+	menu_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
+	menu_btn.custom_minimum_size = Vector2(0, 40)
+	menu_btn.pressed.connect(_on_btn_menu_click_end)
+	vbox.add_child(menu_btn)
 
 func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -170,6 +268,11 @@ func movement():
 	
 	velocity = mov.normalized()*movement_speed
 	move_and_slide()
+	
+	var new_pos = global_position
+	new_pos.x = clamp(new_pos.x, map_bounds.left, map_bounds.right)
+	new_pos.y = clamp(new_pos.y, map_bounds.top, map_bounds.bottom)
+	global_position = new_pos
 
 func attack():
 	if icespear_level > 0:
@@ -187,8 +290,18 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor, 1.0, 999.0)
 	healthBar.max_value = maxhp
 	healthBar.value = hp
+	damage_flash_time = 0.2
+	camera_shake()
 	if hp <= 0:
 		death()
+
+func camera_shake():
+	var shake_amount = 5.0
+	var shake_duration = 0.2
+	var tween = create_tween()
+	tween.tween_property(camera, "offset", Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount)), 0.05)
+	tween.tween_property(camera, "offset", Vector2(randf_range(-shake_amount/2, shake_amount/2), randf_range(-shake_amount/2, shake_amount/2)), 0.05)
+	tween.tween_property(camera, "offset", Vector2.ZERO, shake_duration - 0.1)
 
 func _on_ice_spear_timer_timeout():
 	icespear_ammo += icespear_baseammo + additional_attacks
@@ -336,7 +449,8 @@ func upgrade_character(upgrade):
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":
-			movement_speed += 20.0
+			speed += 0.05
+			movement_speed = base_movement_speed * (1 + speed)
 		"tome1","tome2","tome3","tome4":
 			spell_size += 0.10
 		"scroll1","scroll2","scroll3","scroll4":
@@ -346,6 +460,7 @@ func upgrade_character(upgrade):
 		"food":
 			hp += 20
 			hp = clamp(hp,0,maxhp)
+			maxhp += 5
 	adjust_gui_collection(upgrade)
 	attack()
 	var option_children = upgradeOptions.get_children()
@@ -393,6 +508,82 @@ func change_time(argtime = 0):
 		get_s = str(0,get_s)
 	lblTimer.text = str(get_m,":",get_s)
 
+func on_enemy_killed():
+	enemy_kills += 1
+	update_kills_display()
+
+func update_kills_display():
+	lblKills.text = str("Kills: ", enemy_kills)
+
+func setup_minimap():
+	var gui = get_node("GUILayer/GUI")
+	minimap_panel = Control.new()
+	minimap_panel.name = "Minimap"
+	minimap_panel.position = Vector2(545, 265)
+	minimap_panel.size = Vector2(80, 80)
+	minimap_panel.draw.connect(_draw_minimap)
+	gui.add_child(minimap_panel)
+
+func update_minimap():
+	if minimap_panel and is_instance_valid(minimap_panel):
+		minimap_panel.queue_redraw()
+
+func _draw_minimap():
+	if not minimap_panel:
+		return
+	
+	var minimap_size = Vector2(80, 80)
+	var map_width = map_bounds.right - map_bounds.left
+	var map_height = map_bounds.bottom - map_bounds.top
+	
+	if map_width == 0 or map_height == 0:
+		return
+	
+	var scale_x = minimap_size.x / map_width
+	var scale_y = minimap_size.y / map_height
+	
+	var player_pos_normalized = Vector2(
+		(global_position.x - map_bounds.left) * scale_x,
+		(global_position.y - map_bounds.top) * scale_y
+	)
+	
+	var shadow_offset = Vector2(2, 2)
+	minimap_panel.draw_rect(Rect2(shadow_offset, minimap_size), Color(0, 0, 0, 0.5), true)
+	
+	minimap_panel.draw_rect(Rect2(Vector2.ZERO, minimap_size), Color(0.1, 0.1, 0.15, 0.85), true)
+	
+	var corner_radius = 4.0
+	for i in range(4):
+		var angle = i * PI / 2
+		var corner_pos = Vector2.ZERO
+		if i == 0:
+			corner_pos = Vector2(corner_radius, corner_radius)
+		elif i == 1:
+			corner_pos = Vector2(minimap_size.x - corner_radius, corner_radius)
+		elif i == 2:
+			corner_pos = Vector2(minimap_size.x - corner_radius, minimap_size.y - corner_radius)
+		else:
+			corner_pos = Vector2(corner_radius, minimap_size.y - corner_radius)
+	
+	minimap_panel.draw_rect(Rect2(Vector2.ZERO, minimap_size), Color(0.3, 0.6, 0.8, 0.4), false, 2)
+	minimap_panel.draw_rect(Rect2(Vector2(1, 1), minimap_size - Vector2(2, 2)), Color(0.4, 0.7, 1.0, 0.2), false, 1)
+	
+	for enemy in enemy_close:
+		if is_instance_valid(enemy):
+			var enemy_pos_normalized = Vector2(
+				(enemy.global_position.x - map_bounds.left) * scale_x,
+				(enemy.global_position.y - map_bounds.top) * scale_y
+			)
+			if enemy_pos_normalized.x >= 0 and enemy_pos_normalized.x <= minimap_size.x and \
+			   enemy_pos_normalized.y >= 0 and enemy_pos_normalized.y <= minimap_size.y:
+				minimap_panel.draw_circle(enemy_pos_normalized, 2, Color(1, 0.2, 0.2, 0.9))
+				minimap_panel.draw_circle(enemy_pos_normalized, 3, Color(1, 0.4, 0.4, 0.3), false, 1)
+	
+	minimap_panel.draw_circle(player_pos_normalized, 3.5, Color(0, 0, 0, 0.4))
+	minimap_panel.draw_circle(player_pos_normalized, 3, Color(0.2, 1, 0.3, 1))
+	minimap_panel.draw_circle(player_pos_normalized, 4, Color(0.5, 1, 0.6, 0.6), false, 1.5)
+	minimap_panel.draw_circle(player_pos_normalized, 1.2, Color(1, 1, 1, 0.8))
+
 func adjust_gui_collection(upgrade):
 	var get_upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"]
 	var get_type = UpgradeDb.UPGRADES[upgrade]["type"]
@@ -416,11 +607,14 @@ func death():
 	var tween = deathPanel.create_tween()
 	tween.tween_property(deathPanel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
+	
+	var stats_text = "\n\nKills: %d\nTempo: %d:%02d\nLevel: %d" % [enemy_kills, int(time/60), time % 60, experience_level]
+	
 	if time >= 300:
-		lblResult.text = "You Win"
+		lblResult.text = "You Win!" + stats_text
 		sndVictory.play()
 	else:
-		lblResult.text = "You Lose"
+		lblResult.text = "You Lose" + stats_text
 		sndLose.play()
 
 func show_quiz_difficulty_selection():

@@ -1,9 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://du6qbgqucaqov"]
+[gd_scene load_steps=28 format=3 uid="uid://du6qbgqucaqov"]
 
-[ext_resource type="Script" uid="uid://bqt5ymq5vq6w4" path="res://World/spawn_rock.gd" id="1_awrha"]
 [ext_resource type="Texture2D" uid="uid://bhgnlnl700er5" path="res://Textures/cao.png" id="1_ddb8v"]
 [ext_resource type="PackedScene" uid="uid://dncgepmkc4jf4" path="res://Player/player.tscn" id="2_40uwv"]
-[ext_resource type="Texture2D" uid="uid://pq3u7t26avsl" path="res://Textures/Rock_Formation.png" id="2_f23eu"]
 [ext_resource type="PackedScene" uid="uid://ba2claihwes2y" path="res://Utility/enemy_spawner.tscn" id="3_p01g4"]
 [ext_resource type="PackedScene" uid="uid://gvm5jcbbgwdv" path="res://Enemy/enemy_kobold_weak.tscn" id="4_ee8bm"]
 [ext_resource type="Script" uid="uid://dmq4cx6tw4emm" path="res://Utility/spawn_info.gd" id="5_jj7s8"]
@@ -91,21 +89,6 @@ enemy_num = 1
 
 [node name="World" type="Node2D"]
 show_behind_parent = true
-
-[node name="rock" type="Node2D" parent="."]
-position = Vector2(-1718, -1833)
-script = ExtResource("1_awrha")
-
-[node name="rock" type="Sprite2D" parent="rock"]
-top_level = true
-position = Vector2(-1718, -1833)
-texture = ExtResource("2_f23eu")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="rock/rock"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rock/rock/StaticBody2D"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_0wqet")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 2

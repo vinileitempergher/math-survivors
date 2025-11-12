@@ -23,8 +23,16 @@ func _ready():
 
 func _physics_process(delta):
 	if target != null:
-		global_position = global_position.move_toward(target.global_position, speed)
-		speed += 2*delta
+		var direction = global_position.direction_to(target.global_position)
+		var distance = global_position.distance_to(target.global_position)
+		
+		speed += 800 * delta
+		speed = min(speed, 600)
+		
+		if distance > 10:
+			global_position += direction * speed * delta
+		else:
+			global_position = target.global_position
 
 func collect():
 	sound.play()

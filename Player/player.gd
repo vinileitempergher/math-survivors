@@ -223,7 +223,7 @@ func show_pause_menu():
 	
 	var vbox = VBoxContainer.new()
 	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	vbox.add_theme_constant_override("separation", 20)
+	vbox.add_theme_constant_override("separation", 8)
 	pause_panel.add_child(vbox)
 	
 	var title = Label.new()
@@ -237,14 +237,20 @@ func show_pause_menu():
 	var resume_btn = Button.new()
 	resume_btn.text = "Continuar (ESC)"
 	resume_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
-	resume_btn.custom_minimum_size = Vector2(0, 40)
+	# Make the button use the full available width and reduce size/spacing so it fits nicely
+	resume_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	resume_btn.custom_minimum_size = Vector2(0, 45)
+	resume_btn.add_theme_font_size_override("font_size", 18)
 	resume_btn.pressed.connect(toggle_pause)
 	vbox.add_child(resume_btn)
 	
 	var menu_btn = Button.new()
 	menu_btn.text = "Menu Principal"
 	menu_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
-	menu_btn.custom_minimum_size = Vector2(0, 40)
+	# Same adjustments for the menu button so the label fits inside the panel
+	menu_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	menu_btn.custom_minimum_size = Vector2(0, 45)
+	menu_btn.add_theme_font_size_override("font_size", 18)
 	menu_btn.pressed.connect(_on_btn_menu_click_end)
 	vbox.add_child(menu_btn)
 

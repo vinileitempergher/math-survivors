@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_xdjxl"]
+[ext_resource type="Texture" path="res://Textures/menu_bg.jpg" id="2_bg"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
 
 [node name="Menu" type="Control"]
@@ -13,11 +14,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oi0p3")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+expand = true
+texture = ExtResource("2_bg")
+stretch_mode = 0
+mouse_filter = 2
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 673.0
 offset_bottom = 382.0
 color = Color(0.241878, 0.304426, 0.653372, 1)
+visible = false
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -28,6 +38,7 @@ theme_override_font_sizes/font_size = 72
 text = "Math Survivors"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible = false
 
 [node name="btn_play" parent="." instance=ExtResource("3_kwsdd")]
 layout_mode = 0
@@ -35,7 +46,7 @@ offset_left = 280.0
 offset_top = 250.0
 offset_right = 360.0
 offset_bottom = 280.0
-text = "Play"
+text = "Jogar"
 
 [node name="btn_exit" parent="." instance=ExtResource("3_kwsdd")]
 layout_mode = 0
@@ -43,7 +54,7 @@ offset_left = 280.0
 offset_top = 290.0
 offset_right = 360.0
 offset_bottom = 320.0
-text = "Exit"
+text = "Sair"
 
 [connection signal="click_end" from="btn_play" to="." method="_on_btn_play_click_end"]
 [connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]

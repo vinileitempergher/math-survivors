@@ -1,9 +1,2 @@
-res://Enemy/enemy_cyclops.tscn
-res://Enemy/enemy_kobold_weak.tscn
-res://Player/Attack/javelin.tscn
-res://Player/Attack/ice_spear.tscn
-res://Enemy/enemy_kobold_strong.tscn
-res://Player/player.gd
-res://Utility/item_option.tscn
-res://Player/Attack/javelin.gd
-res://Enemy/enemy_juggernaut.tscn
+res://Utility/hurt_box.tscn
+res://Utility/upgrade_db.gd

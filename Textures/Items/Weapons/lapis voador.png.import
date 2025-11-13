@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0fkim6yu0srf"
-path="res://.godot/imported/helmet_1.png-783865ce112100f55acf5ce298edba94.ctex"
+uid="uid://ci70kneaccoy0"
+path="res://.godot/imported/lapis voador.png-5e1fa83cbe3ef70417ebf9419a4dafa4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Upgrades/helmet_1.png"
-dest_files=["res://.godot/imported/helmet_1.png-783865ce112100f55acf5ce298edba94.ctex"]
+source_file="res://Textures/Items/Weapons/lapis voador.png"
+dest_files=["res://.godot/imported/lapis voador.png-5e1fa83cbe3ef70417ebf9419a4dafa4.ctex"]
 
 [params]
 

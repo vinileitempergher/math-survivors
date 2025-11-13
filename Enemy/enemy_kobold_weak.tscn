@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://gvm5jcbbgwdv"]
 
 [ext_resource type="Script" uid="uid://bphxyonmtn3wq" path="res://Enemy/enemy.gd" id="1_1bh7b"]
-[ext_resource type="Texture2D" uid="uid://b2sbmelwv5u73" path="res://Textures/Enemy/divisao.png" id="2_mm2yx"]
+[ext_resource type="Texture2D" uid="uid://c7kvbuoxuvebj" path="res://Textures/Enemy/south-west monstro de capa.png" id="2_mm2yx"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gamcv"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_vdnsx"]
 [ext_resource type="AudioStream" uid="uid://bi7t7cjthnhhc" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_03jve"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_24u87"]
 radius = 2.0
-height = 10.0
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_xfnyu"]
 length = 0.001
@@ -49,7 +49,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rborl"]
-size = Vector2(18, 21)
+size = Vector2(10, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucec4"]
 size = Vector2(10, 16)
@@ -61,12 +61,12 @@ motion_mode = 1
 script = ExtResource("1_1bh7b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.9999996, 1.4999993)
-scale = Vector2(0.7407407, 0.5121951)
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+scale = Vector2(0.33087388, 0.3032822)
 texture = ExtResource("2_mm2yx")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_24u87")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -79,14 +79,13 @@ collision_mask = 4
 HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(1, 1.5)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_rborl")
 
 [node name="HitBox" parent="." instance=ExtResource("4_vdnsx")]
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(1, 3)
 shape = SubResource("RectangleShape2D_ucec4")
 
 [node name="snd_hit" type="AudioStreamPlayer2D" parent="."]

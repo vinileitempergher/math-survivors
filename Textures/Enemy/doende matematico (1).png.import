@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0fkim6yu0srf"
-path="res://.godot/imported/helmet_1.png-783865ce112100f55acf5ce298edba94.ctex"
+uid="uid://wbmw0pe87uag"
+path="res://.godot/imported/doende matematico (1).png-d5a71a47c3a80c568b2c99ce1a0a3757.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Upgrades/helmet_1.png"
-dest_files=["res://.godot/imported/helmet_1.png-783865ce112100f55acf5ce298edba94.ctex"]
+source_file="res://Textures/Enemy/doende matematico (1).png"
+dest_files=["res://.godot/imported/doende matematico (1).png-d5a71a47c3a80c568b2c99ce1a0a3757.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0fkim6yu0srf"
-path="res://.godot/imported/helmet_1.png-783865ce112100f55acf5ce298edba94.ctex"
+uid="uid://c7kvbuoxuvebj"
+path="res://.godot/imported/south-west monstro de capa.png-842301ea88a9026aa920413992e49d92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Upgrades/helmet_1.png"
-dest_files=["res://.godot/imported/helmet_1.png-783865ce112100f55acf5ce298edba94.ctex"]
+source_file="res://Textures/Enemy/south-west monstro de capa.png"
+dest_files=["res://.godot/imported/south-west monstro de capa.png-842301ea88a9026aa920413992e49d92.ctex"]
 
 [params]
 

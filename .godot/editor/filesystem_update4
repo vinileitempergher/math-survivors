@@ -1,9 +1,9 @@
-res://Enemy/enemy.gd
 res://Enemy/enemy_cyclops.tscn
-res://Enemy/enemy_juggernaut.tscn
-res://Enemy/enemy_kobold_strong.tscn
 res://Enemy/enemy_kobold_weak.tscn
-res://Objects/experience_gem.gd
+res://Player/Attack/javelin.tscn
+res://Player/Attack/ice_spear.tscn
+res://Enemy/enemy_kobold_strong.tscn
 res://Player/player.gd
-res://Utility/enemy_spawner.gd
-res://Utility/upgrade_db.gd
+res://Utility/item_option.tscn
+res://Player/Attack/javelin.gd
+res://Enemy/enemy_juggernaut.tscn

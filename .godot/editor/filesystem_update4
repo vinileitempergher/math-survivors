@@ -1,2 +1,2 @@
-res://Utility/hurt_box.tscn
-res://Utility/upgrade_db.gd
+res://Enemy/enemy_cyclops.tscn
+res://Utility/enemy_spawner.gd

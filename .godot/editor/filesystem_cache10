@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1763074509
+::res://::1763172793
 export_presets.cfg::TextFile::-1::1762733968::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::1730451811002220422::1762733968::1762990654::1::::<><><>0<>0<>22e3922c0bcc0ed614477686af31f91a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://Audio/::1762733968
@@ -56,8 +56,8 @@ result_placa.png::CompressedTexture2D::4995811855865423621::1762741037::17628217
 Rock_Formation.png::CompressedTexture2D::1087600201677697363::1762741037::1762821793::1::::<><><>0<>0<>f061179096ba156efcfe3a1da849c19d<>res://.godot/imported/Rock_Formation.png-f218c31b83147194dea9471df1ec1462.ctex::
 seta (1).png::CompressedTexture2D::5093808153858461467::1762741037::1762821793::1::::<><><>0<>0<>13f306b6f003f7f72305029dcd5dcd5b<>res://.godot/imported/seta (1).png-9defc420b492bff251276e978c603446.ctex::
 teste monsto.png::CompressedTexture2D::7686472730120915429::1762992007::1762992014::1::::<><><>0<>0<>471986d00a74561dfe56c19607c7c965<>res://.godot/imported/teste monsto.png-090403341db5cf530a017eadb9a6b150.ctex::
-::res://Textures/Enemy/::1762995437
-cyclops math.png::CompressedTexture2D::3962652609871800147::1762741037::1762821793::1::::<><><>0<>0<>5acdce18c7395c8943af316ba1b6ec3c<>res://.godot/imported/cyclops math.png-2b511001f445773f3f4ef6f89b7ed023.ctex::
+::res://Textures/Enemy/::1763173023
+cyclops math.png::CompressedTexture2D::3962652609871800147::1763173023::1763173023::1::::<><><>0<>0<>5acdce18c7395c8943af316ba1b6ec3c<>res://.godot/imported/cyclops math.png-2b511001f445773f3f4ef6f89b7ed023.ctex::
 divisao.png::CompressedTexture2D::4318760636127771500::1762741037::1762821793::1::::<><><>0<>0<>fe8494e44a39940b2b53475c798f75d6<>res://.godot/imported/divisao.png-bbc3841c6c9c58dead10f07e08058f1e.ctex::
 doende matematico (1).png::CompressedTexture2D::1546988165652818982::1762995299::1762995308::1::::<><><>0<>0<>c37ccd7761031c29fc74fbca2aa73d9e<>res://.godot/imported/doende matematico (1).png-d5a71a47c3a80c568b2c99ce1a0a3757.ctex::
 explosion_pixelfied.png::CompressedTexture2D::1863200116517840751::1762733968::1762734163::1::::<><><>0<>0<>16f062b925b035127cfedaa6d82f8812<>res://.godot/imported/explosion_pixelfied.png-99d71405af5333f68dea5cbf1e273230.ctex::
@@ -85,13 +85,12 @@ low_boots.png::CompressedTexture2D::1322977870524673861::1762733968::1762734163:
 scroll_old.png::CompressedTexture2D::8894597912220432708::1762733968::1762734163::1::::<><><>0<>0<>2bd55fae84be8484fb5d3b0b51b69c49<>res://.godot/imported/scroll_old.png-c5bb2676fc866de6762f4474868ab1dc.ctex::
 thick_new.png::CompressedTexture2D::3567023041226500108::1762733968::1762734163::1::::<><><>0<>0<>4f476286ef6c7073c5e8728c0def7590<>res://.godot/imported/thick_new.png-d63381379db64c158e9496e34d5c6503.ctex::
 urand_mage.png::CompressedTexture2D::6169360069570463610::1762733968::1762734163::1::::<><><>0<>0<>a1b4fa785f0562b997918a85187bf621<>res://.godot/imported/urand_mage.png-3be7ccf42026b29d2f0736885e9b6f3c.ctex::
-::res://Textures/Items/Weapons/::1763074509
+::res://Textures/Items/Weapons/::1763074513
 ice_spear.png::CompressedTexture2D::8977964355270124835::1762733968::1762734163::1::::<><><>0<>0<>a9ada7435bbd3b2e384c04bb65007264<>res://.godot/imported/ice_spear.png-948aaf14c7173736fae300f7ae1f22a5.ctex::
 javelin_3_new.png::CompressedTexture2D::9110180822661388040::1762733968::1762734163::1::::<><><>0<>0<>aba193d6f7834887a62f69980346657c<>res://.godot/imported/javelin_3_new.png-c2a8e5e6f63e6b577a700a48807a6b39.ctex::
 javelin_3_new_attack.png::CompressedTexture2D::6026409255003932078::1762733968::1762734163::1::::<><><>0<>0<>266e9067cb6ebb254092de7bdfe27b94<>res://.godot/imported/javelin_3_new_attack.png-830d039410fc8e4042b2ab08a0ef517e.ctex::
 lapis voador 32.png::CompressedTexture2D::961574294787696547::1763074501::1763074509::1::::<><><>0<>0<>fbf409a0f62caba94817db9b1f9606fe<>res://.godot/imported/lapis voador 32.png-9e71136146799f19c23738b67a86c6dd.ctex::
 lapis voador.png::CompressedTexture2D::5401948676364122417::1762992881::1762992881::1::::<><><>0<>0<>bda8ac2350bda6228b0b057f3c7a533d<>res://.godot/imported/lapis voador.png-5e1fa83cbe3ef70417ebf9419a4dafa4.ctex::
-safeimagekit-lapis voador.png::CompressedTexture2D::535929557158481647::1763074466::1763074466::1::::<><><>0<>0<>b050c6413b00ae9532444a86115c7567<>res://.godot/imported/safeimagekit-lapis voador.png-3870cee1b6cb7f632ce8d0bd2ed68580.ctex::
 sword.png::CompressedTexture2D::3847054396889028481::1762733968::1762734163::1::::<><><>0<>0<>496fadd8e68ae2289816fcbe4a792b9e<>res://.godot/imported/sword.png-979d87b34967510545433b49f3482194.ctex::
 tornado.png::CompressedTexture2D::6929601552982630361::1762733968::1762734163::1::::<><><>0<>0<>6cbd4b8557b5c7545e86991e8469c0c9<>res://.godot/imported/tornado.png-84bd3c437635d0edcdda9f5a76ecfe31.ctex::
 ::res://Textures/Player/::1762734163
@@ -99,7 +98,7 @@ player_sprite.png::CompressedTexture2D::4436806081945807925::1762733968::1762734
 ::res://TitleScreen/::1762990621
 menu.gd::GDScript::1406536230098233853::1762733968::0::1::::<>Control<><>0<>0<><>::
 menu.tscn::PackedScene::7349793557437909443::1762990621::0::1::::<><><>0<>0<><>::res://TitleScreen/menu.gd<>uid://cb4e8g30xxp5u::::res://Font/tenderness.otf<>res://Textures/menu_bg.jpg<>uid://b7c7gsdx2rkjm::::res://Utility/basic_button.tscn
-::res://Utility/::1763074012
+::res://Utility/::1763074688
 basic_button.gd::GDScript::606096615367619851::1762733968::0::1::::<>Button<><>0<>0<><>::
 basic_button.tscn::PackedScene::4638547045286704830::1762733968::0::1::::<><><>0<>0<><>::uid://bwahs2mtjus02::::res://Audio/GUI/hover.wav<>uid://cb4e8g30xxp5u::::res://Font/tenderness.otf<>res://Utility/basic_button.gd<>uid://dobpqbspunihg::::res://Audio/GUI/click.wav
 enemy_spawner.gd::GDScript::8727914074387409655::1762990621::0::1::::<>Node2D<><>0<>0<><>::
@@ -107,11 +106,11 @@ enemy_spawner.tscn::PackedScene::2442299973477263446::1762733968::0::1::::<><><>
 hit_box.gd::GDScript::6427403057209923235::1762733968::0::1::::<>Area2D<><>0<>0<><>::
 hit_box.tscn::PackedScene::1419315726078758978::1762733968::0::1::::<><><>0<>0<><>::res://Utility/hit_box.gd
 hurt_box.gd::GDScript::8910263462576392646::1762733968::0::1::::<>Area2D<><>0<>0<><>::
-hurt_box.tscn::PackedScene::1665593244324440235::1763074012::0::1::::<><><>0<>0<><>::uid://dy7g0cpwx25w1::::res://Utility/hurt_box.gd
+hurt_box.tscn::PackedScene::1665593244324440235::1763074688::0::1::::<><><>0<>0<><>::uid://dy7g0cpwx25w1::::res://Utility/hurt_box.gd
 item_option.gd::GDScript::1970067273931155856::1762733968::0::1::::<>ColorRect<><>0<>0<><>::
 item_option.tscn::PackedScene::4470608249998982266::1762993735::0::1::::<><><>0<>0<><>::uid://bu2son8g2konp::::res://Textures/Items/Weapons/sword.png<>uid://3ckyqruyrspc::::res://Utility/item_option.gd<>uid://cb4e8g30xxp5u::::res://Font/tenderness.otf
 spawn_info.gd::GDScript::8036323839998492956::1762733968::0::1::::Spawn_info<>Resource<><>0<>0<><>::
-upgrade_db.gd::GDScript::2764913904846729982::1763073884::0::1::::<>Node<><>0<>0<><>::
+upgrade_db.gd::GDScript::2764913904846729982::1763074688::0::1::::<>Node<><>0<>0<><>::
 upgrade_db.tscn::PackedScene::8898193193893975824::1762733968::0::1::::<><><>0<>0<><>::res://Utility/upgrade_db.gd
 ::res://World/::1762990621
 arvore_spawn.gd::GDScript::8268169129523261920::1762741037::0::1::::<>Node2D<><>0<>0<><>::

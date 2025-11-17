@@ -307,7 +307,7 @@ func show_pause_menu():
 	vbox.add_child(title)
 	
 	var resume_btn = Button.new()
-	resume_btn.text = "Continuar (ESC)"
+	resume_btn.text = "Continuar"
 	resume_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
 	# Make the button use the full available width and reduce size/spacing so it fits nicely
 	resume_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL

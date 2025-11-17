@@ -858,15 +858,23 @@ func _on_difficulty_selected(difficulty: String):
 		difficulty_panel.queue_free()
 	show_quiz()
 
-func _on_quiz_answer_selected(selected_answer: int):
-	# Buscar o painel no caminho correto
+func _on_quiz_answer_selected(selected_answer):
+	# Aceita qualquer tipo de resposta (int, float, String) —
+	# normalizamos para string antes de comparar para evitar erros
+	# quando a resposta contém símbolos (ex: "%", "×", "²")
+
+	# Buscar o painel no caminho correto e fechá-lo imediatamente
 	var quiz_panel = get_node("GUILayer/GUI/QuizPanel")
 	if quiz_panel:
 		quiz_panel.queue_free()
-	
+
 	quiz_panel_visible = false
-	
-	if selected_answer == current_quiz_question["answer"]:
+
+	# Normaliza tanto a resposta selecionada quanto a resposta correta
+	var normalized_selected = str(selected_answer).strip_edges()
+	var normalized_answer = str(current_quiz_question["answer"]).strip_edges()
+
+	if normalized_selected == normalized_answer:
 		# Resposta correta - proceder com level up
 		proceed_with_levelup()
 	else:

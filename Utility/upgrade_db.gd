@@ -6,24 +6,24 @@ const WEAPON_PATH = "res://Textures/Items/Weapons/"
 const UPGRADES = {
 	"icespear1": {
 		"icon": WEAPON_PATH + "ice_spear.png",
-		"displayname": "Lança de Gelo",
-		"details": "Uma lança de gelo é arremessada em um inimigo aleatório",
+		"displayname": "Orbe de poder",
+		"details": "Uma orbe é arremessada em um inimigo aleatório",
 		"level": "Nível: 1",
 		"prerequisite": [],
 		"type": "weapon"
 	},
 	"icespear2": {
 		"icon": WEAPON_PATH + "ice_spear.png",
-		"displayname": "Lança de Gelo",
-		"details": "Uma Lança de Gelo adicional é arremessada",
+		"displayname": "Orbe de poder",
+		"details": "Uma orbe é arremessada em um inimigo aleatório",
 		"level": "Nível: 2",
 		"prerequisite": ["icespear1"],
 		"type": "weapon"
 	},
 	"icespear3": {
 		"icon": WEAPON_PATH + "ice_spear.png",
-		"displayname": "Lança de Gelo",
-		"details": "Lanças de Gelo atravessam inimigos e causam +3 de dano",
+		"displayname": "Orbe de poder",
+		"details": "Uma orbe atravessa inimigos e causam +3 de dano",
 		"level": "Nível: 3",
 		"prerequisite": ["icespear2"],
 		"type": "weapon"
@@ -37,33 +37,33 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"javelin1": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Dardo Mágico",
-		"details": "Um dardo mágico te segue atacando inimigos em linha reta",
+		"icon": WEAPON_PATH + "lapis voador 32.png",
+		"displayname": "Lápis Voador",
+		"details": "Um lápis voador te segue atacando inimigos em linha reta",
 		"level": "Nível: 1",
 		"prerequisite": [],
 		"type": "weapon"
 	},
 	"javelin2": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Dardo Mágico",
-		"details": "O dardo ataca um inimigo adicional por ataque",
+		"icon": WEAPON_PATH + "lapis voador 32.png",
+		"displayname": "Lápis voador",
+		"details": "O lápis voador ataca um inimigo adicional por ataque",
 		"level": "Nível: 2",
 		"prerequisite": ["javelin1"],
 		"type": "weapon"
 	},
 	"javelin3": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Dardo Mágico",
-		"details": "O dardo ataca mais um inimigo adicional por ataque",
+		"icon": WEAPON_PATH + "lapis voador 32.png",
+		"displayname": "Lápis voador",
+		"details": "O lápis voador ataca mais um inimigo adicional por ataque",
 		"level": "Nível: 3",
 		"prerequisite": ["javelin2"],
 		"type": "weapon"
 	},
 	"javelin4": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Dardo Mágico",
-		"details": "O dardo causa +5 de dano e 20% mais repulsão",
+		"icon": WEAPON_PATH + "lapis voador 32.png",
+		"displayname": "Lápis voador",
+		"details": "O lápis voador causa +5 de dano e 20% mais repulsão",
 		"level": "Nível: 4",
 		"prerequisite": ["javelin3"],
 		"type": "weapon"

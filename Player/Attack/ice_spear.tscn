@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://wpliv06gy0pq"]
 
-[ext_resource type="Script" path="res://Player/Attack/ice_spear.gd" id="1_4el3j"]
+[ext_resource type="Script" uid="uid://cd42ba46bwxkf" path="res://Player/Attack/ice_spear.gd" id="1_4el3j"]
 [ext_resource type="AudioStream" uid="uid://cl3g2vts3nyt0" path="res://Audio/SoundEffect/ice.wav" id="3_esswn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jhipx"]
 load_path = "res://.godot/imported/ice_spear.png-948aaf14c7173736fae300f7ae1f22a5.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
-size = Vector2(6.36396, 33.234)
+size = Vector2(16.440235, 15.556347)
 
 [node name="IceSpear" type="Area2D" groups=["attack"]]
 top_level = true
@@ -20,8 +20,9 @@ script = ExtResource("1_4el3j")
 texture = SubResource("CompressedTexture2D_jhipx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.500001, -0.999999)
-rotation = -0.785398
+position = Vector2(-0.31250373, 1.3124976)
+rotation = -0.78539795
+scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_p4tiy")
 
 [node name="Timer" type="Timer" parent="."]

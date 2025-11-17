@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://hcjnrdsb563h"]
 
 [ext_resource type="Script" uid="uid://bphxyonmtn3wq" path="res://Enemy/enemy.gd" id="1_r5pfe"]
-[ext_resource type="Texture2D" uid="uid://ck5tv67simg2i" path="res://Textures/Enemy/doende matematico.png" id="2_yhovj"]
+[ext_resource type="Texture2D" uid="uid://wbmw0pe87uag" path="res://Textures/Enemy/doende matematico (1).png" id="2_yhovj"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_nvgld"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_pe6tj"]
 [ext_resource type="AudioStream" uid="uid://bi7t7cjthnhhc" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_h3y3s"]
@@ -61,9 +61,10 @@ motion_mode = 1
 script = ExtResource("1_r5pfe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.16406238, 1.0000033)
-scale = Vector2(0.2697443, 0.24999993)
+position = Vector2(-9.536743e-07, 0)
+scale = Vector2(0.37228867, 0.34375)
 texture = ExtResource("2_yhovj")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_24u87")

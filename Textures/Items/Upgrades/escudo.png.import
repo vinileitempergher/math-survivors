@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck5tv67simg2i"
-path="res://.godot/imported/doende matematico.png-3ee0d169abc325fab98118a2b8a800b0.ctex"
+uid="uid://bqh0rtd4hlevw"
+path="res://.godot/imported/escudo.png-db90e6ef99a8d39c679aae9496865925.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/doende matematico.png"
-dest_files=["res://.godot/imported/doende matematico.png-3ee0d169abc325fab98118a2b8a800b0.ctex"]
+source_file="res://Textures/Items/Upgrades/escudo.png"
+dest_files=["res://.godot/imported/escudo.png-db90e6ef99a8d39c679aae9496865925.ctex"]
 
 [params]
 

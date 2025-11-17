@@ -223,7 +223,7 @@ func show_pause_menu():
 	
 	var vbox = VBoxContainer.new()
 	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	vbox.add_theme_constant_override("separation", 20)
+	vbox.add_theme_constant_override("separation", 8)
 	pause_panel.add_child(vbox)
 	
 	var title = Label.new()
@@ -231,20 +231,38 @@ func show_pause_menu():
 	title.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
 	title.add_theme_font_size_override("font_size", 32)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	# Reduz a altura ocupada pelo título para que os botões fiquem mais próximos (subam)
+	# Em vez de expandir verticalmente, damos uma altura mínima e permitimos encolher
+	title.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	title.custom_minimum_size = Vector2(0, 30)
+	title.size_flags_stretch_ratio = 0.2
 	vbox.add_child(title)
 	
 	var resume_btn = Button.new()
 	resume_btn.text = "Continuar (ESC)"
 	resume_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
+	# Make the button use the full available width and reduce size/spacing so it fits nicely
+	resume_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# Diminuir o tamanho dos botões: altura menor e não expandir verticalmente
 	resume_btn.custom_minimum_size = Vector2(0, 40)
+	resume_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	# Não forçar stretch vertical
+	resume_btn.size_flags_stretch_ratio = 0.0
+	resume_btn.add_theme_font_size_override("font_size", 18)
 	resume_btn.pressed.connect(toggle_pause)
 	vbox.add_child(resume_btn)
 	
 	var menu_btn = Button.new()
 	menu_btn.text = "Menu Principal"
 	menu_btn.add_theme_font_override("font", preload("res://Font/tenderness.otf"))
+	# Same adjustments for the menu button so the label fits inside the panel
+	menu_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# Diminuir o tamanho dos botões: altura menor e não expandir verticalmente
 	menu_btn.custom_minimum_size = Vector2(0, 40)
+	menu_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	# Não forçar stretch vertical
+	menu_btn.size_flags_stretch_ratio = 0.0
+	menu_btn.add_theme_font_size_override("font_size", 18)
 	menu_btn.pressed.connect(_on_btn_menu_click_end)
 	vbox.add_child(menu_btn)
 

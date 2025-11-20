@@ -5,7 +5,7 @@ extends Node2D
 @onready var player = get_tree().get_first_node_in_group("player")
 
 @export var time: int = 0
-@export var max_enemies: int = 300       # << LIMITE DE INIMIGOS
+@export var max_enemies: int = 115       # << LIMITE DE INIMIGOS
 @export var cull_distance: float = 6000.0
 
 signal changetime(time)

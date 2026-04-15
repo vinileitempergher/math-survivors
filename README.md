@@ -1,4 +1,4 @@
-# Math Survivors 2
+# Math Survivors
 
 A 2D action game built with Godot where players battle mathematical enemies to survive, level up, and discover powerful upgrades.
 
